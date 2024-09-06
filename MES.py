@@ -27,18 +27,21 @@ class MES:
 
     def produce_units(self, production_line_name):
         for production_line in self.__productionLines:
-            all_orders = production_line.get_production_line(production_line_name).get_orders()
-            print(all_orders)
+            all_orders = production_line.get_orders()
+            for order in all_orders:
+                print(order.get_name())
+                print(order.quantity)
         return
 
 
 if __name__ == '__main__':
     mes = MES()
     mes.add_production_line("1")
-    mes.add_production_line("2")
+    # mes.add_production_line("2")
 
     mes.get_production_lines()
-    mes.get_production_line("1")
+    # mes.get_production_line("1")
+    mes.create_production_order("1", 1, "test", 100)
 
     mes.produce_units("1")
 

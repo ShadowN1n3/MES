@@ -35,3 +35,6 @@ class ProductionOrder:
             return self.__produced_units / self.__quantity * 100
         else:
             raise Exception('Cannot calculate efficiency for this order')
+
+    def get_name(self):
+        return self.__product_name
