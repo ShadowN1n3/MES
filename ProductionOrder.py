@@ -26,11 +26,12 @@ class ProductionOrder:
     def produce(self, units):
         if self.__started and not self.__finished:
             self.__produced_units += units
+
         else:
             raise Exception('Order is not in a state to produce units')
 
     def get_production_efficiency(self):
         if self.__finished:
-            return self.__produced_units / self.__quantity * 100 #um die Anzahl in % zu bekommen
+            return self.__produced_units / self.__quantity * 100
         else:
             raise Exception('Cannot calculate efficiency for this order')

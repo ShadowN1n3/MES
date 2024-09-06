@@ -1,4 +1,5 @@
 import ProductionLine
+import ProductionOrder
 
 
 class MES:
@@ -20,6 +21,16 @@ class MES:
         except StopIteration:
             return None
 
+    def create_production_order(self, production_line_name, order_number, product_name, quantity):
+        self.get_production_line(production_line_name).add_order(order_number, product_name, quantity)
+        return None
+
+    def produce_units(self, production_line_name):
+        for production_line in self.__productionLines:
+            all_orders = production_line.get_production_line(production_line_name).get_orders()
+            print(all_orders)
+        return
+
 
 if __name__ == '__main__':
     mes = MES()
@@ -28,3 +39,7 @@ if __name__ == '__main__':
 
     mes.get_production_lines()
     mes.get_production_line("1")
+
+    mes.produce_units("1")
+
+
