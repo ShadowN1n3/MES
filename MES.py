@@ -26,23 +26,26 @@ class MES:
         return None
 
     def produce_units(self, production_line_name):
-        for production_line in self.__productionLines:
-            all_orders = production_line.get_orders()
-            for order in all_orders:
-                print(order.get_name())
-                print(order.quantity)
+        production_line = self.get_production_line(production_line_name)
+        all_orders = production_line.get_orders()
+        for order in all_orders:
+            order_quantity = order.get_quantity()
+            for i in range(1, order_quantity + 1):
+                print("Start order with the number: ", order.get_order_number(), " | production line: ",
+                      production_line_name)
+                print("Object with the name: ", order.get_name(), " | number: ", i, " created")
+                print()
         return
 
 
 if __name__ == '__main__':
     mes = MES()
     mes.add_production_line("1")
-    # mes.add_production_line("2")
+    mes.add_production_line("2")
 
-    mes.get_production_lines()
+    # mes.get_production_lines()
     # mes.get_production_line("1")
-    mes.create_production_order("1", 1, "test", 100)
+    mes.create_production_order("1", 1, "test1", 1)
+    mes.create_production_order("1", 2, "test2", 3)
 
     mes.produce_units("1")
-
-

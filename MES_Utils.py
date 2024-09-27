@@ -6,7 +6,6 @@ class mes_utils:
                 return order
         return None
 
-
     @staticmethod
     def calculate_production_efficiency(order):
         if order.status != 'finished':

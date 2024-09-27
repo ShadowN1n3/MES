@@ -38,3 +38,8 @@ class ProductionOrder:
 
     def get_name(self):
         return self.__product_name
+
+    def get_quantity(self):
+        return self.__quantity
+
+
