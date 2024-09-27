@@ -1,4 +1,7 @@
-class mes_utils:
+import ProductionOrder
+
+
+class MES_Utils:
     @staticmethod
     def get_order_by_number(production_line, order_number):
         for order in production_line:
@@ -7,9 +10,8 @@ class mes_utils:
         return None
 
     @staticmethod
-    def calculate_production_efficiency(order):
-        if order.status != 'finished':
-            raise ValueError(f"Produktion für Bestellung '{order['order_number']}' ist noch nicht abgeschlossen.")
-
-        efficiency = 0.90
-        return efficiency * 100
+    def calculate_production_efficiency(order: ProductionOrder):
+        if order.finish():
+            return order.__produced_units / order.__quantity * 100
+        else:
+            raise Exception('Cannot calculate efficiency for this order')

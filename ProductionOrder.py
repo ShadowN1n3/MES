@@ -1,3 +1,5 @@
+import MES_Utils
+
 class ProductionOrder:
 
     def __init__(self, order_number, product_name, quantity):
@@ -31,10 +33,8 @@ class ProductionOrder:
             raise Exception('Order is not in a state to produce units')
 
     def get_production_efficiency(self):
-        if self.__finished:
-            return self.__produced_units / self.__quantity * 100
-        else:
-            raise Exception('Cannot calculate efficiency for this order')
+        print(MES_Utils.MES_Utils.calculate_production_efficiency(self), "%")
+        return
 
     def get_name(self):
         return self.__product_name
